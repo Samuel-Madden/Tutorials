@@ -6,7 +6,7 @@
 
 using namespace std;
 
-vector<int> minElements(int n, vector<int> arr) {
+vector<int> reverseArray(int n, vector<int> arr) {
 	int j = 0;
 	int k = n - 1;
 	for (int i = 0; i < n/2; i++) {
@@ -26,7 +26,7 @@ int main()
 	for (int i = 0; i < n; i++) {
 		cin >> arr[i];
 	}
-	vector<int> ans = minElements(n, arr);
+	vector<int> ans = reverseArray(n, arr);
 
 	cout << endl;
 
