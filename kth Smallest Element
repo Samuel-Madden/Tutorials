@@ -21,7 +21,7 @@ int main()
 	for (int i = 0; i < n; i++) {
 		cin >> arr[i];
 	}
-	sort(arr.begin(), arr.end());
+	sort(arr.begin(), arr.end()); //sorted the array before passing it to the function
 
 	int ans = kthSmallest(n, k, arr);
 
