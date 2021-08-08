@@ -1,0 +1,46 @@
+//Most Occuring Element - Solution 1
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+
+using namespace std;
+
+int mostOccuringElement(int n, vector<int> arr) {
+	int mostOccuring = arr[0];
+	int maxOccurances = 1;
+	for (int i = 0; i < arr.size(); i++) {
+		int occurances = 1;
+		for (int j = i + 1; j < arr.size() - 1; j++) {
+			if (arr[i] != arr[j])break;
+			occurances++;
+		}
+
+		if (occurances > maxOccurances) {
+			maxOccurances = occurances;
+			mostOccuring = arr[i];
+		}
+	}
+	return mostOccuring;
+}
+
+int main()
+{
+	int n;
+	cin >> n;
+
+	vector<int> arr(n);
+	for (int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
+
+	sort(arr.begin(), arr.end()); //sort array before sending to functions
+
+	int mostOccuring = mostOccuringElement(n, arr);
+
+	cout << endl << mostOccuring;
+
+	return 0;
+}
