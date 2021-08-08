@@ -1,0 +1,38 @@
+//Remove All Occurances
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<int> removeOccurance(int n, int removeValue, vector<int> arr) {
+	for (int i = 0; i < arr.size(); i++) {
+		if (arr[i] == removeValue) {
+			arr.erase(arr.begin()+i);
+			i--;
+		}
+	}
+
+	return arr;
+}
+
+int main()
+{
+	int n;
+	cin >> n;
+	int removeValue;
+	cin >> removeValue;
+	vector<int> arr(n);
+	for (int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
+	vector<int> ans = removeOccurance(n, removeValue, arr);
+
+	cout << endl;
+
+	for (int i = 0; i < ans.size(); i++) {
+		cout << ans[i] << " ";
+	}
+	return 0;
+}
