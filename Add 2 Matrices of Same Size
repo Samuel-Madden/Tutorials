@@ -1,5 +1,5 @@
 //Add 2 matrices of same size
-
+//Side note: Create another solution using arrays instead.
 #include <iostream>
 #include <string>
 #include <vector>
