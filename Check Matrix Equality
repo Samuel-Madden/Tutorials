@@ -1,0 +1,53 @@
+//check to see if 2 matrices equal one another
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+
+using namespace std;
+
+bool check(int n, int m, int j, int k, vector<vector<int>> matrixA, vector<vector<int>> matrixB) {
+
+	if (n != j || m != k)return false;
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			if (matrixA[i][j] != matrixB[i][j])return false;
+		}
+	}
+	return true;
+}
+
+int main()
+{
+	int n, m, j, k;
+	cin >> n >> m >> j >> k;
+	vector<vector<int>> matrixA(n);
+	vector<vector<int>> matrixB(j);
+
+	for (int i = 0; i < n; i++) {
+		vector<int> row(m);
+		for (int l = 0; l < m; l++) {
+			cin >> row[l];
+		}
+		matrixA[i] = row;
+	}
+
+	for (int i = 0; i < j; i++) {
+		vector<int> row(k);
+		for (int l = 0; l < m; l++) {
+			cin >> row[l];
+		}
+		matrixB[i] = row;
+	}
+	bool result = check(n, m, j, k, matrixA, matrixB);
+
+	if (result) {
+		cout << "true";
+	}
+	else { cout << "false"; }
+
+	return 0;
+}
