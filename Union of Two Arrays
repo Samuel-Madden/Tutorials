@@ -1,0 +1,70 @@
+//Union of two Arrays - Solution 1
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+
+using namespace std;
+
+vector<int> unionOfTwo(int n, int m, vector<int> arr, vector<int> arrTwo) {
+	vector<int> result;
+	int temp = 0;
+	for (int i = 0; i < arr.size(); i++) {
+		result.push_back(arr[i]);
+		for (int j = i + 1; j <= arr.size(); j++) {
+			if (j == arr.size()) { temp = j; break; }
+			if (arr[i] != arr[j]) { temp = j; break; }
+			temp = j;
+		}
+		i = temp - 1;
+	}
+	int j = 0, cap = result.size();
+	for (int i = 0; i < arrTwo.size(); i++) {
+		if (arrTwo[i] < result[j]) {
+			result.push_back(arrTwo[i]);
+		}
+		else if (arrTwo[i] > result[j]) {
+			j++; i--;
+		}
+		if (j == cap) {
+			result.insert(result.end(), arrTwo.begin() + i, arrTwo.end());
+			break;
+		}
+	}
+	return result;
+}
+
+int main()
+{
+	int n, m;
+	cin >> n >> m;
+	vector<int> arr(n);
+	for (int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
+
+	vector<int> arrTwo(m);
+	for (int i = 0; i < m; i++) {
+		cin >> arrTwo[i];
+	}
+
+	sort(arr.begin(), arr.end());
+	sort(arrTwo.begin(), arrTwo.end());
+
+	vector<int> ans;
+	if (n > m) {
+		ans = unionOfTwo(n, m, arr, arrTwo);
+	}
+	else {
+		ans = unionOfTwo(n, m, arrTwo, arr);
+	}
+
+	cout << endl;
+
+	for (int i = 0; i < ans.size(); i++) {
+		cout << ans[i] << " ";
+	}
+	return 0;
+}
