@@ -1,0 +1,52 @@
+//Add 2 matrices of same size
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+
+using namespace std;
+
+vector<vector<int>> addMatrices(int n, int m, vector<vector<int>> matrixA, vector<vector<int>> matrixB) {
+	vector<vector<int>> ans (n);
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			ans[i].push_back(matrixA[i][j] + matrixB[i][j]);
+		}
+	}
+	return ans;
+}
+
+int main()
+{
+	int n, m;
+	cin >> n >> m;
+	vector<vector<int>> matrixA(n);
+	vector<vector<int>> matrixB(n);
+
+	for (int i = 0; i < n; i++) {
+		vector<int> row(m);
+		for (int j = 0; j < m; j++) {
+			cin >> row[j];
+		}
+		matrixA[i] = row;
+	}
+
+	for (int i = 0; i < n; i++) {
+		vector<int> row(m);
+		for (int j = 0; j < m; j++) {
+			cin >> row[j];
+		}
+		matrixB[i] = row;
+	}
+	vector<vector<int>> result = addMatrices(n, m, matrixA, matrixB);
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			cout << result[i][j] << " ";
+		}
+		cout << endl;
+	}
+	return 0;
+}
