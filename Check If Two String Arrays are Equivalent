@@ -1,0 +1,46 @@
+//Check If Two String Arrays are Equivalent
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+bool checkEquivalent(int n, int m, vector<string> word1, vector<string> word2) {
+	string first = "";
+	string second = "";
+
+	for (int i = 0; i < word1.size(); i++) {
+		first += word1[i];
+	}
+	for (int i = 0; i < word2.size(); i++) {
+		second += word2[i];
+	}
+
+	return (first == second);
+}
+
+int main()
+{
+	int n, m;
+	cin >> n >> m;
+	vector<string> word1(n);
+	vector<string> word2(m);
+
+	for (int i = 0; i < word1.size(); i++) {
+		cin >> word1[i];
+	}
+	for (int i = 0; i < word2.size(); i++) {
+		cin >> word2[i];
+	}
+
+	bool ans = checkEquivalent(n, m, word1, word2);
+
+	cout << endl;
+
+	if (ans == true)cout << "true";
+	else { cout << "false"; }
+
+	return 0;
+}
