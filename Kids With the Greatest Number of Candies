@@ -1,0 +1,45 @@
+//Kids With the Greatest Number of Candies
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+vector<bool> kidsWithCandies(int n, int extraCandies, vector<int> arr) {
+	vector<bool> ans(arr.size());
+	int mostCandies = *max_element(arr.begin(), arr.end());
+	for (int i = 0; i < arr.size(); i++) {
+		if ((arr[i] + extraCandies) >= mostCandies) {
+			ans[i] = true;
+		}
+		else {
+			ans[i] = false;
+		}
+	}
+	return ans;
+}
+
+int main()
+{
+	int n, extraCandies;
+	cin >> n >> extraCandies;
+	vector<int> arr(n);
+	for (int i = 0; i < arr.size(); i++) {
+		cin >> arr[i];
+	}
+	vector<bool> ans = kidsWithCandies(n, extraCandies, arr);
+
+	cout << endl;
+
+	for (int i = 0; i < ans.size(); i++) {
+		if (ans[i] == true) {
+			cout << "true, ";
+		}
+		else {
+			cout << "false, ";
+		}
+	}
+	return 0;
+}
