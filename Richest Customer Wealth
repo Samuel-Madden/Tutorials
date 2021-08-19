@@ -1,0 +1,45 @@
+//Richest Customer Wealth
+
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+
+using namespace std;
+
+int richestCustomer(int n, int m, vector<vector<int>> accounts) {
+	int highestWealth = INT_MIN;
+	for (int i = 0; i < n; i++) {
+		int currentCustomerWealth = 0;
+
+		for (int j = 0; j < m; j++) {
+			currentCustomerWealth += accounts[i][j];
+		}
+
+		if (currentCustomerWealth > highestWealth) highestWealth = currentCustomerWealth;
+	}
+
+	return highestWealth;
+}
+
+int main()
+{
+	int n, m;
+	cin >> n >> m;
+	vector<vector<int>> accounts(n);
+
+	for (int i = 0; i < n; i++) {
+		vector<int> row(m);
+		for (int j = 0; j < m; j++) {
+			cin >> row[j];
+		}
+		accounts[i] = row;
+	}
+
+	int result = richestCustomer(n, m, accounts);
+
+	cout << result << endl;
+	return 0;
+}
