@@ -1,0 +1,48 @@
+//Degree of an array 
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+#include <algorithm>
+
+
+using namespace std;
+
+int findShortestSubArray(int n, vector<int> arr) {
+	map<int, int> left, right, frequency;
+	int degree = 0;
+	for (int i = 0; i < arr.size(); i++) {
+		if (left.find(arr[i]) == left.end()) {
+			left.insert({ arr[i], i });
+		}
+		right[arr[i]] = i;
+		frequency[arr[i]]++;
+		degree = max(degree, frequency[arr[i]]);
+	}
+
+	int ans = arr.size();
+	for (auto myPair : frequency) {
+		if (frequency[myPair.first] == degree) {
+			ans = min(ans, right[myPair.first] - left[myPair.first] + 1);
+		}
+	}
+	return ans;
+}
+
+int main()
+{
+	int n;
+	cin >> n;
+	vector<int> arr(n);
+	for (int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
+	int ans = findShortestSubArray(n, arr);
+
+	cout << endl;
+
+	cout << ans;
+
+	return 0;
+}
