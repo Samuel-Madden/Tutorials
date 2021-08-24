@@ -1,0 +1,39 @@
+//Maximum Continguous Subarray
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+#include <algorithm>
+
+
+using namespace std;
+
+int maxSubArray(int n, vector<int>& arr) {
+	int globalMax = arr[0], currentMax = arr[0];
+	for (int i = 1; i < arr.size(); i++) {
+		currentMax = max(arr[i], currentMax + arr[i]);
+
+		if (currentMax > globalMax) {
+			globalMax = currentMax;
+		}
+	}
+	return globalMax;
+}
+
+int main()
+{
+	int n;
+	cin >> n;
+	vector<int> arr(n);
+	for (int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
+	int ans = maxSubArray(n, arr);
+
+	cout << endl;
+
+	cout << ans;
+
+	return 0;
+}
